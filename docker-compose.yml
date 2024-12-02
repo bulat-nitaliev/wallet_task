@@ -19,15 +19,19 @@ services:
     build: 
       context: ./task
       
-    command: gunicorn  config.wsgi:application --bind 0.0.0.0:10000
+    command: gunicorn  config.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - 8000:8000
     restart: unless-stopped
     networks: 
       - net
     container_name: api
     volumes:
       - api_vol:/task
+    tty: true
+    stdin_open: true
     environment:
-      - POSTGRES_NAME=postgres
+      - POSTGRES_DB=test
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     depends_on:

@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 COPY . .     
 
 
-EXPOSE 10000
+EXPOSE 8000

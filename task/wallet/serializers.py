@@ -30,7 +30,7 @@ class WalletSerializer(serializers.ModelSerializer):
 
 
 class OperationSerializer(serializers.Serializer):
-    operation_type = serializers.ChoiceField(choices=['DEPOSIT', 'WITHDRAW'])
+    operationType = serializers.ChoiceField(choices=['DEPOSIT', 'WITHDRAW'])
     amount = serializers.DecimalField(max_digits=20, decimal_places=4)
 
     # fields = ['operation_type', 'amount']

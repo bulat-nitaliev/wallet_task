@@ -46,7 +46,7 @@ class WalletTestCase(APITestCase):
     def test_error_valid_operation(self):
         wallet = WalletFactory.create(user=self.user)
         data = {
-            'operation_type': 'DEPOSITDEPOSIT' ,
+            'operationType': 'DEPOSITDEPOSIT' ,
             'amount': 1000
         }
         response = self.client.post(self.url + f'{wallet.uuid}/operation/', data=data, format='json')
@@ -54,7 +54,7 @@ class WalletTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         withdraw_data = {
-            'operation_type': 'WITHDRAW' ,
+            'operationType': 'WITHDRAW' ,
             'amount': wallet.balance + 1
         }
         error_message = {"error": "Insufficient funds"}
@@ -69,7 +69,7 @@ class WalletTestCase(APITestCase):
         wallet = WalletFactory.create(user=self.user)
 
         data = {
-            'operation_type': 'DEPOSIT' ,
+            'operationType': 'DEPOSIT' ,
             'amount': 1000
         }
 
@@ -89,7 +89,7 @@ class WalletTestCase(APITestCase):
         wallet = WalletFactory.create(user=self.user)
 
         data = {
-            'operation_type': 'WITHDRAW' ,
+            'operationType': 'WITHDRAW' ,
             'amount': wallet.balance
         }
 

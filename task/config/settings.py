@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'wallet',
     'drf_spectacular',
 
-    'rest_framework_simplejwt',
+    'rest_framework_simplejwt',permission_classes
 ]
 
 MIDDLEWARE = [

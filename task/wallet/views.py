@@ -20,7 +20,8 @@ class WalletViewSet(viewsets.ReadOnlyModelViewSet):
     lookup_field = 'uuid'
 
     serializer_class = WalletSerializer
-    # permission_classes = [permissions.IsAuthenticated,]
+    
+    permission_classes = [permissions.IsAuthenticated,]
 
     @action(detail=True, methods=['post'], url_path='operation')
     def perform_operation(self, request, uuid=None):
@@ -31,7 +32,7 @@ class WalletViewSet(viewsets.ReadOnlyModelViewSet):
         
         serializer = OperationSerializer(data=request.data)
         if serializer.is_valid():
-            operation_type = serializer.validated_data['operation_type']
+            operation_type = serializer.validated_data['operationType']
             amount = serializer.validated_data['amount']
             
             lock = threading.Lock()
